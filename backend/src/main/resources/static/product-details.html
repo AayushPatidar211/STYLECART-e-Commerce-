@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details — StyleCart</title>
+  <meta name="description" content="View apparel details, fabric composition, available sizing, and purchase with secure Razorpay Checkout.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header id="site-header"></header>
+
+  <main style="padding: 2.5rem 0 5rem;">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 2rem;">
+        <a href="index.html" style="text-decoration: underline;">Home</a> &nbsp;/&nbsp;
+        <a href="products.html" style="text-decoration: underline;">Shop</a> &nbsp;/&nbsp;
+        <span id="breadcrumb-product-name">Product Details</span>
+      </nav>
+
+      <!-- Main Product Grid: 2 Columns -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-bottom: 5rem;">
+        <!-- Left: Image Gallery -->
+        <div>
+          <div style="position: relative; border-radius: var(--radius-lg); overflow: hidden; background: #f1f1f5; aspect-ratio: 3/4; margin-bottom: 1rem; border: 1px solid var(--border);">
+            <img id="main-product-img" src="" alt="Garment main preview" style="width: 100%; height: 100%; object-fit: cover; object-position: top;" />
+            <span id="detail-discount-tag" class="product-discount-tag" style="display: none;">-20%</span>
+          </div>
+          <!-- Thumbnails Strip -->
+          <div id="product-thumbnails" style="display: flex; gap: 0.75rem;">
+            <!-- Thumbnails injected via JS -->
+          </div>
+        </div>
+
+        <!-- Right: Information & Actions -->
+        <div>
+          <span id="detail-brand" style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); display: block; margin-bottom: 0.35rem;">BRAND</span>
+          <h1 id="detail-title" style="font-family: var(--font-serif); font-size: 2.25rem; font-weight: 800; line-height: 1.25; margin-bottom: 1rem;">Garment Title</h1>
+
+          <!-- Rating & Reviews -->
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; font-size: 0.85rem;">
+            <div style="display: flex; align-items: center; gap: 0.25rem; color: #f59e0b;">
+              <span>★★★★★</span>
+              <span id="detail-rating" style="color: var(--text-main); font-weight: 700; margin-left: 0.25rem;">4.8</span>
+            </div>
+            <span style="color: var(--border);">|</span>
+            <span id="detail-reviews" style="color: var(--text-muted);">48 verified reviews</span>
+            <span style="color: var(--border);">|</span>
+            <span id="detail-stock-status" class="badge badge-delivered">In Stock</span>
+          </div>
+
+          <!-- Price -->
+          <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+            <span id="detail-current-price" style="font-size: 2rem; font-weight: 800; color: var(--text-main); font-family: var(--font-mono);">$0.00</span>
+            <span id="detail-original-price" style="font-size: 1.2rem; text-decoration: line-through; color: var(--text-light); font-family: var(--font-mono);">$0.00</span>
+            <span style="font-size: 0.8rem; color: var(--emerald); font-weight: 600;">Inclusive of all taxes</span>
+          </div>
+
+          <!-- Color Selector -->
+          <div style="margin-bottom: 1.75rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem;">
+              Color: <span id="selected-color-label" style="font-weight: 400; color: var(--text-muted);">Camel</span>
+            </label>
+            <div id="color-options-container" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <!-- Color chips injected via JS -->
+            </div>
+          </div>
+
+          <!-- Size Selector -->
+          <div style="margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <label style="font-size: 0.85rem; font-weight: 700;">
+                Select Size: <span id="selected-size-label" style="font-weight: 400; color: var(--text-muted);">M</span>
+              </label>
+              <button id="btn-size-guide" style="font-size: 0.75rem; color: var(--text-muted); background: none; border: none; cursor: pointer; text-decoration: underline;">Size Guide</button>
+            </div>
+            <div id="size-options-container" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <!-- Size buttons injected via JS -->
+            </div>
+          </div>
+
+          <!-- Quantity Picker -->
+          <div style="margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem;">
+            <label style="font-size: 0.85rem; font-weight: 700;">Quantity:</label>
+            <div style="display: inline-flex; align-items: center; border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden;">
+              <button id="btn-qty-minus" style="padding: 0.5rem 1rem; background: #fff; border: none; cursor: pointer; font-size: 1rem;">-</button>
+              <span id="selected-qty-display" style="padding: 0.5rem 1rem; font-weight: 700; font-family: var(--font-mono);">1</span>
+              <button id="btn-qty-plus" style="padding: 0.5rem 1rem; background: #fff; border: none; cursor: pointer; font-size: 1rem;">+</button>
+            </div>
+          </div>
+
+          <!-- Purchase Buttons -->
+          <div style="display: flex; gap: 1rem; margin-bottom: 2.5rem;">
+            <button id="btn-add-to-bag" class="btn btn-primary btn-lg" style="flex: 1;">
+              Add to Shopping Bag
+            </button>
+            <button id="btn-buy-now" class="btn btn-secondary btn-lg" style="flex: 1; border-color: var(--primary);">
+              Buy Now &rarr;
+            </button>
+            <button id="btn-toggle-wishlist" class="btn btn-secondary" style="padding: 0.95rem;" title="Save to wishlist">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+            </button>
+          </div>
+
+          <!-- Description Accordion -->
+          <div style="border-top: 1px solid var(--border); padding-top: 1.5rem;">
+            <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem;">Garment Details & Silhouette</h3>
+            <p id="detail-description" style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem;">
+              Product details will appear here.
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.8rem; background: var(--bg-subtle); padding: 1.25rem; border-radius: var(--radius-md);">
+              <div>
+                <strong>Material:</strong> Organic Twill / Wool Blend
+              </div>
+              <div>
+                <strong>Fit:</strong> Tailored Modern Silhouette
+              </div>
+              <div>
+                <strong>Care:</strong> Dry clean or cold delicate wash
+              </div>
+              <div>
+                <strong>Origin:</strong> Ethically crafted
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Products Strip -->
+      <section style="margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border);">
+        <h2 style="font-family: var(--font-serif); font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem;">You May Also Appreciate</h2>
+        <div id="related-products-grid" class="product-grid">
+          <!-- Injected via JS -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Size Guide Modal -->
+  <div id="size-guide-modal" class="modal-backdrop">
+    <div class="modal-content" style="max-width: 600px;">
+      <button id="size-guide-close" class="modal-close-btn">✕</button>
+      <h3 style="font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Apparel Sizing Matrix</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">All measurements are provided in inches. Standard international tailoring fit.</p>
+      <table class="admin-table" style="width: 100%; border: 1px solid var(--border);">
+        <thead>
+          <tr>
+            <th>Size</th>
+            <th>Chest (in)</th>
+            <th>Waist (in)</th>
+            <th>Hips (in)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>XS</td><td>34 - 36</td><td>28 - 30</td><td>34 - 36</td></tr>
+          <tr><td>S</td><td>36 - 38</td><td>30 - 32</td><td>36 - 38</td></tr>
+          <tr><td>M</td><td>38 - 40</td><td>32 - 34</td><td>38 - 40</td></tr>
+          <tr><td>L</td><td>40 - 42</td><td>34 - 36</td><td>40 - 42</td></tr>
+          <tr><td>XL</td><td>42 - 44</td><td>36 - 38</td><td>42 - 44</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script type="module" src="js/product-details.js"></script>
+</body>
+</html>

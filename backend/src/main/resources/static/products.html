@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Apparel & Products — StyleCart</title>
+  <meta name="description" content="Browse our luxury clothing, coats, trousers, dresses, boots, and accessories with multi-criteria filters.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header id="site-header"></header>
+
+  <main style="padding: 2.5rem 0 5rem;">
+    <div class="container">
+      <!-- Breadcrumb & Page Heading -->
+      <div style="margin-bottom: 2rem;">
+        <nav style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+          <a href="index.html" style="text-decoration: underline;">Home</a> &nbsp;/&nbsp; <span>Shop Collection</span>
+        </nav>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h1 id="page-title" style="font-family: var(--font-serif); font-size: 2.25rem; font-weight: 800;">Curated Clothing & Apparel</h1>
+            <p id="results-count" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Showing all available styles</p>
+          </div>
+          
+          <!-- Sort Dropdown -->
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <label for="sort-select" style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">Sort By:</label>
+            <select id="sort-select" class="form-control" style="width: auto; padding: 0.5rem 1rem; font-size: 0.85rem;">
+              <option value="newest">Newest Arrivals</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Customer Rating</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Filter + Grid Layout -->
+      <div style="display: grid; grid-template-columns: 280px 1fr; gap: 2.5rem; align-items: start;">
+        <!-- Left Filter Sidebar -->
+        <aside style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; position: sticky; top: 5.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Filters</h3>
+            <button id="btn-reset-filters" style="font-size: 0.75rem; color: var(--text-muted); background: none; border: none; cursor: pointer; text-decoration: underline;">Reset All</button>
+          </div>
+
+          <!-- Department / Category -->
+          <div style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 0.75rem;">Department</h4>
+            <div id="filter-categories" style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;">
+              <!-- Injected via products.js -->
+            </div>
+          </div>
+
+          <!-- Price Range Slider -->
+          <div style="margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <h4 style="font-size: 0.85rem; font-weight: 700;">Max Price</h4>
+              <span id="price-display" style="font-size: 0.85rem; font-weight: 700; font-family: var(--font-mono);">$400</span>
+            </div>
+            <input type="range" id="price-range" min="30" max="400" step="10" value="400" style="width: 100%; cursor: pointer;" />
+          </div>
+
+          <!-- Brand Filter -->
+          <div style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 0.75rem;">Designer Brand</h4>
+            <select id="filter-brand" class="form-control" style="font-size: 0.85rem; padding: 0.5rem;">
+              <option value="">All Brands</option>
+            </select>
+          </div>
+
+          <!-- Min Rating -->
+          <div>
+            <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 0.75rem;">Customer Rating</h4>
+            <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.85rem;">
+              <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                <input type="radio" name="rating-filter" value="" checked>
+                <span>Any Rating</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                <input type="radio" name="rating-filter" value="4.8">
+                <span>★ 4.8 & Above</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                <input type="radio" name="rating-filter" value="4.5">
+                <span>★ 4.5 & Above</span>
+              </label>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Product Grid Area -->
+        <div>
+          <div id="catalog-products-grid" class="product-grid">
+            <!-- Injected via products.js -->
+          </div>
+
+          <!-- Empty State -->
+          <div id="no-products-msg" style="display: none; text-align: center; padding: 5rem 1rem; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg);">
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔍</div>
+            <h3 style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">No garments match your filters</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Try relaxing your price filters or searching with a different term.</p>
+            <button id="btn-clear-empty-state" class="btn btn-primary btn-sm">Clear All Filters</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script type="module" src="js/products.js"></script>
+</body>
+</html>

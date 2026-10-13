@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Checkout — StyleCart</title>
+  <meta name="description" content="Complete your apparel order securely with official Razorpay Checkout or Cash on Delivery.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main style="padding: 2.5rem 0 5rem;">
+    <div class="container">
+      <!-- Checkout Stepper Bar -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: 3rem; margin-bottom: 2.5rem;">
+        <div id="step-1-indicator" style="display: flex; align-items: center; gap: 0.65rem; font-weight: 700; color: var(--primary);">
+          <span style="width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">1</span>
+          <span>Delivery Address</span>
+        </div>
+        <div style="width: 60px; height: 2px; background: var(--border);"></div>
+        <div id="step-2-indicator" style="display: flex; align-items: center; gap: 0.65rem; font-weight: 600; color: var(--text-muted);">
+          <span style="width: 28px; height: 28px; border-radius: 50%; background: var(--border); color: var(--text-main); display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">2</span>
+          <span>Payment & Razorpay</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 400px; gap: 3rem; align-items: start;">
+        <!-- Left: Stepper Content -->
+        <div>
+          <!-- STEP 1: Address Form -->
+          <div id="checkout-step-1" class="card" style="padding: 2rem;">
+            <h2 style="font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem;">Shipping Address</h2>
+            <form id="address-form">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="addr-fullname">Full Recipient Name *</label>
+                  <input type="text" id="addr-fullname" class="form-control" required placeholder="e.g. Sarah Jenkins" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="addr-phone">Phone Number (Required for Razorpay SMS/OTP) *</label>
+                  <input type="tel" id="addr-phone" class="form-control" required placeholder="+91 98765 43210" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="addr-street">Street Address *</label>
+                <input type="text" id="addr-street" class="form-control" required placeholder="742 Evergreen Terrace" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="addr-apartment">Apartment, Suite, Unit (Optional)</label>
+                <input type="text" id="addr-apartment" class="form-control" placeholder="Apt 4B" />
+              </div>
+
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label class="form-label" for="addr-city">City *</label>
+                  <input type="text" id="addr-city" class="form-control" required placeholder="Springfield" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="addr-state">State / Province *</label>
+                  <input type="text" id="addr-state" class="form-control" required placeholder="OR" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="addr-postal">Postal / PIN Code *</label>
+                  <input type="text" id="addr-postal" class="form-control" required placeholder="97477" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="addr-country">Country *</label>
+                <select id="addr-country" class="form-control">
+                  <option value="India">India</option>
+                  <option value="United States" selected>United States</option>
+                  <option value="United Kingdom">United Kingdom</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Australia">Australia</option>
+                </select>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  Continue to Payment &rarr;
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- STEP 2: Payment Selection -->
+          <div id="checkout-step-2" class="card" style="display: none; padding: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+              <h2 style="font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700;">Select Payment Method</h2>
+              <button id="btn-configure-key" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; gap: 0.35rem;">
+                ⚙️ Razorpay Key Settings
+              </button>
+            </div>
+
+            <!-- Payment Options -->
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+              <!-- Official Razorpay Option -->
+              <label id="payment-card-razorpay" style="display: flex; align-items: start; gap: 1rem; padding: 1.25rem; border: 2px solid var(--primary); border-radius: var(--radius-md); background: #fafafa; cursor: pointer;">
+                <input type="radio" name="payment-method" value="RAZORPAY" checked style="margin-top: 0.25rem;">
+                <div style="flex: 1;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-weight: 700; font-size: 0.95rem;">Razorpay Official Gateway</span>
+                    <span class="badge badge-paid">Recommended</span>
+                  </div>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">
+                    Pay instantly via UPI (GPay, PhonePe, Paytm), Credit/Debit Card, or Netbanking in secure modal.
+                  </p>
+                  <div style="margin-top: 0.65rem; font-size: 0.75rem; color: var(--emerald); font-weight: 600;">
+                    ✓ Zero processing fees &nbsp;·&nbsp; Instant digital authorization
+                  </div>
+                </div>
+              </label>
+
+              <!-- Cash On Delivery Option -->
+              <label id="payment-card-cod" style="display: flex; align-items: start; gap: 1rem; padding: 1.25rem; border: 1px solid var(--border); border-radius: var(--radius-md); background: #ffffff; cursor: pointer;">
+                <input type="radio" name="payment-method" value="COD" style="margin-top: 0.25rem;">
+                <div style="flex: 1;">
+                  <span style="font-weight: 700; font-size: 0.95rem;">Cash on Delivery (COD)</span>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">
+                    Pay in cash or card upon delivery package arrival at your door.
+                  </p>
+                </div>
+              </label>
+            </div>
+
+            <!-- Order Notes -->
+            <div class="form-group" style="margin-bottom: 2rem;">
+              <label class="form-label" for="order-notes">Delivery Instructions (Optional)</label>
+              <textarea id="order-notes" class="form-control" rows="2" placeholder="e.g. Leave with concierge or front porch safe place..."></textarea>
+            </div>
+
+            <!-- Buttons -->
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+              <button id="btn-back-to-step-1" class="btn btn-secondary">
+                &larr; Back to Address
+              </button>
+              <button id="btn-confirm-order" class="btn btn-primary btn-lg" style="min-width: 240px;">
+                Open Razorpay & Pay
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Order Summary -->
+        <div class="card" style="padding: 1.75rem;">
+          <h3 style="font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">
+            Order Items (<span id="summary-items-count">0</span>)
+          </h3>
+          <div id="checkout-items-list" style="max-height: 280px; overflow-y: auto; margin-bottom: 1.5rem; divide-y: 1px solid var(--border);">
+            <!-- Items injected via checkout.js -->
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.85rem; padding-top: 1rem; border-top: 1px solid var(--border); margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-muted);">Subtotal</span>
+              <span id="chk-subtotal" style="font-family: var(--font-mono); font-weight: 600;">$0.00</span>
+            </div>
+            <div id="chk-discount-row" style="display: none; justify-content: space-between; color: var(--emerald);">
+              <span>Discount</span>
+              <span id="chk-discount" style="font-family: var(--font-mono); font-weight: 600;">-$0.00</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-muted);">Shipping</span>
+              <span id="chk-shipping" style="font-family: var(--font-mono); font-weight: 600;">FREE</span>
+            </div>
+            <div style="padding-top: 0.75rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 800;">
+              <span>Total Payable</span>
+              <div style="text-align: right;">
+                <span id="chk-total-usd" style="font-family: var(--font-mono);">$0.00 USD</span>
+                <span id="chk-total-inr" style="display: block; font-size: 0.8rem; color: var(--emerald); font-weight: 700;">≈ ₹0 INR</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: var(--bg-subtle); padding: 1rem; border-radius: var(--radius-md); font-size: 0.75rem; color: var(--text-muted); line-height: 1.6;">
+            <strong>Razorpay Security Guarantee:</strong> All payment credentials, cards, and UPI VPA tokens are processed directly by Razorpay's PCI-DSS Level 1 certified gateway.
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Razorpay Custom Key Modal -->
+  <div id="razorpay-key-modal" class="modal-backdrop">
+    <div class="modal-content" style="max-width: 480px;">
+      <button id="key-modal-close" class="modal-close-btn">✕</button>
+      <h3 style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">Razorpay Key Configuration</h3>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+        Configure your test or live Razorpay Key ID. Defaults to public sandbox key.
+      </p>
+      <form id="key-config-form">
+        <div class="form-group">
+          <label class="form-label" for="custom-key-input">Razorpay Key ID (rzp_test_... or rzp_live_...)</label>
+          <input type="text" id="custom-key-input" class="form-control" style="font-family: var(--font-mono); font-size: 0.85rem;" placeholder="rzp_test_1DP5mmOlF5G5ag" />
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+          <button type="button" id="btn-reset-key" style="font-size: 0.75rem; color: var(--text-muted); background: none; border: none; cursor: pointer; text-decoration: underline;">Reset to Default Key</button>
+          <div style="display: flex; gap: 0.5rem;">
+            <button type="button" id="btn-cancel-key" class="btn btn-secondary btn-sm">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-sm">Save Key</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script type="module" src="js/checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed — StyleCart</title>
+  <meta name="description" content="Thank you for your apparel order! Your order has been placed and payment confirmed.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main style="padding: 3rem 0 5rem;">
+    <div class="container container-narrow">
+      <div class="card" style="padding: 3rem 2rem; text-align: center; margin-bottom: 2rem;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--emerald-light); color: var(--emerald); display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1.5rem;">
+          ✓
+        </div>
+        <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--emerald);">Payment & Order Confirmed</span>
+        <h1 style="font-family: var(--font-serif); font-size: 2.25rem; font-weight: 800; margin: 0.5rem 0 1rem;">
+          Thank You for Your Order!
+        </h1>
+        <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 500px; margin: 0 auto 2rem; line-height: 1.6;">
+          We have received your purchase and will dispatch your garments with complimentary tracking.
+        </p>
+
+        <!-- Order Key Metrics Box -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; background: var(--bg-subtle); padding: 1.5rem; border-radius: var(--radius-md); text-align: left; margin-bottom: 2.5rem;">
+          <div>
+            <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Order Reference</span>
+            <span id="succ-order-number" style="font-size: 1rem; font-weight: 700; font-family: var(--font-mono); color: var(--text-main);">SC-2026-XXXX</span>
+          </div>
+          <div>
+            <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Tracking Code</span>
+            <span id="succ-tracking" style="font-size: 1rem; font-weight: 700; font-family: var(--font-mono); color: #2563eb;">TRK-XXXX</span>
+          </div>
+          <div>
+            <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Payment Status</span>
+            <span id="succ-payment-status" class="badge badge-paid" style="margin-top: 0.25rem;">Captured (PAID)</span>
+          </div>
+          <div id="succ-rzp-box">
+            <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Razorpay Payment ID</span>
+            <span id="succ-rzp-id" style="font-size: 0.85rem; font-weight: 600; font-family: var(--font-mono); color: var(--emerald);">pay_XXXX</span>
+          </div>
+        </div>
+
+        <!-- Order Items List -->
+        <div style="text-align: left; margin-bottom: 2.5rem;">
+          <h3 style="font-size: 1.1rem; font-weight: 700; font-family: var(--font-serif); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">
+            Purchased Apparel Items
+          </h3>
+          <div id="succ-items-container" style="divide-y: 1px solid var(--border);">
+            <!-- Items injected via JS -->
+          </div>
+        </div>
+
+        <!-- Shipping & Totals Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; text-align: left; padding: 1.5rem; border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 2.5rem;">
+          <div>
+            <h4 style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem;">Shipping Address</h4>
+            <p id="succ-address-text" style="font-size: 0.85rem; line-height: 1.6; color: var(--text-main);">
+              Address details
+            </p>
+          </div>
+          <div>
+            <h4 style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem;">Total Billed</h4>
+            <div style="display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.85rem;">
+              <div style="display: flex; justify-content: space-between;">
+                <span>Subtotal:</span>
+                <span id="succ-subtotal" style="font-family: var(--font-mono);">$0.00</span>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span>Shipping:</span>
+                <span id="succ-shipping" style="font-family: var(--font-mono);">FREE</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 1.05rem; border-top: 1px solid var(--border); padding-top: 0.5rem; margin-top: 0.35rem;">
+                <span>Total Paid:</span>
+                <span id="succ-total" style="font-family: var(--font-mono);">$0.00 USD</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Links -->
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a id="btn-track-order" href="orders.html" class="btn btn-primary">
+            Track Order Lifecycle &rarr;
+          </a>
+          <a href="products.html" class="btn btn-secondary">
+            Continue Shopping
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script type="module" src="js/order-success.js"></script>
+</body>
+</html>

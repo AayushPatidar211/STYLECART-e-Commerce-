@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — StyleCart</title>
+  <meta name="description" content="Register a new customer account to access exclusive apparel lookbooks and checkout.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main style="padding: 3rem 0 5rem;">
+    <div class="container container-narrow" style="max-width: 520px;">
+      <div class="card" style="padding: 2.5rem;">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <h1 style="font-family: var(--font-serif); font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">Create Account</h1>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Join StyleCart for complimentary delivery and early seasonal drops</p>
+        </div>
+
+        <form id="register-form">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="reg-firstname">First Name *</label>
+              <input type="text" id="reg-firstname" class="form-control" required placeholder="Elena" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reg-lastname">Last Name *</label>
+              <input type="text" id="reg-lastname" class="form-control" required placeholder="Rostova" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Email Address *</label>
+            <input type="email" id="reg-email" class="form-control" required placeholder="elena@example.com" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-phone">Phone Number (Optional)</label>
+            <input type="tel" id="reg-phone" class="form-control" placeholder="+1-555-0199" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Password (6+ characters) *</label>
+            <input type="password" id="reg-password" class="form-control" required minlength="6" placeholder="••••••••" />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 1.5rem;">
+            Create StyleCart Account
+          </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 2rem; font-size: 0.85rem; color: var(--text-muted);">
+          Already registered? <a href="login.html" style="color: var(--primary); font-weight: 600; text-decoration: underline;">Sign in here</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script type="module" src="js/auth-pages.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "StyleCart - Modern Fashion E-Commerce",
+  "description": "StyleCart full-stack clothing store with HTML5, CSS3, Vanilla JavaScript, Spring Boot REST APIs, and Razorpay Checkout.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

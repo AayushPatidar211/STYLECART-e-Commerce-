@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StyleCart — Modern Fashion E-Commerce</title>
+  <meta name="description" content="Discover curated modern apparel, seasonal lookbooks, and timeless wardrobe essentials at StyleCart.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header id="site-header"></header>
+
+  <!-- Hero Section -->
+  <main>
+    <section style="background: linear-gradient(135deg, #18181b 0%, #27272a 100%); color: #ffffff; padding: 5rem 0 6rem; position: relative; overflow: hidden;">
+      <div class="container" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: center;">
+        <div style="z-index: 2;">
+          <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 0.35rem 0.85rem; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.15);">
+            <span>Autumn / Winter 2026 Collection</span>
+          </div>
+          <h1 style="font-family: var(--font-serif); font-size: 3.25rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.5rem;">
+            Architectural Silhouettes. <br><em style="font-style: italic; font-weight: 400; color: #fef08a;">Uncompromised Craft.</em>
+          </h1>
+          <p style="font-size: 1.05rem; color: #d4d4d8; line-height: 1.7; max-width: 520px; margin-bottom: 2.25rem;">
+            Explore timeless tailoring, heavyweight organic cottons, and Italian calf suede boots curated for effortless sophistication.
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="products.html" class="btn btn-primary btn-lg" style="background: #ffffff; color: #18181b;">Explore Collection &rarr;</a>
+            <a href="products.html?category=Women" class="btn btn-secondary btn-lg" style="background: transparent; color: #ffffff; border-color: rgba(255,255,255,0.3);">Women's Edit</a>
+          </div>
+        </div>
+
+        <div style="position: relative; z-index: 2;">
+          <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-xl); border: 1px solid rgba(255,255,255,0.15); aspect-ratio: 4/5; max-height: 500px;">
+            <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=800&q=80" alt="StyleCart Featured Trench Coat" style="width: 100%; height: 100%; object-fit: cover; object-position: top;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Strip -->
+    <section style="padding: 4.5rem 0 3rem; background: #ffffff; border-bottom: 1px solid var(--border);">
+      <div class="container">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2rem;">
+          <div>
+            <h2 style="font-family: var(--font-serif); font-size: 1.85rem; font-weight: 700;">Curated Departments</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Browse our signature apparel categories</p>
+          </div>
+          <a href="products.html" style="font-size: 0.85rem; font-weight: 600; text-decoration: underline;">All Departments &rarr;</a>
+        </div>
+        <div id="category-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem;">
+          <!-- Injected via home.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products Grid -->
+    <section style="padding: 4.5rem 0;">
+      <div class="container">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2.5rem;">
+          <div>
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent);">Curated Highlights</span>
+            <h2 style="font-family: var(--font-serif); font-size: 2rem; font-weight: 800; margin-top: 0.25rem;">Top Rated Apparel</h2>
+          </div>
+          <a href="products.html?sortBy=rating" class="btn btn-secondary btn-sm">View All &rarr;</a>
+        </div>
+        <div id="featured-products-grid" class="product-grid">
+          <!-- Injected via home.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Propositions -->
+    <section style="background: var(--bg-card); padding: 4rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2.5rem; text-align: center;">
+          <div style="padding: 1.5rem;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🚚</div>
+            <h3 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Complimentary Shipping</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Free ground delivery on all domestic orders exceeding $50.</p>
+          </div>
+          <div style="padding: 1.5rem;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">💳</div>
+            <h3 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Razorpay Verified</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Instant 100% secure checkout via UPI, cards, and netbanking.</p>
+          </div>
+          <div style="padding: 1.5rem;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">✨</div>
+            <h3 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Artisan Craftsmanship</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Dense fabrics, reinforced seam construction, and natural dyes.</p>
+          </div>
+          <div style="padding: 1.5rem;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🔄</div>
+            <h3 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Effortless Exchanges</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Enjoy 30-day risk-free returns and friendly concierge support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="site-footer"></footer>
+
+  <script type="module" src="js/home.js"></script>
+</body>
+</html>

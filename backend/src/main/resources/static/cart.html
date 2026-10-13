@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Bag — StyleCart</title>
+  <meta name="description" content="Review your selected apparel items, apply promotional discounts, and proceed to secure checkout.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main style="padding: 2.5rem 0 5rem;">
+    <div class="container">
+      <h1 style="font-family: var(--font-serif); font-size: 2.25rem; font-weight: 800; margin-bottom: 2rem;">
+        Your Shopping Bag (<span id="cart-page-count">0</span>)
+      </h1>
+
+      <div id="cart-empty-view" style="display: none; text-align: center; padding: 5rem 1rem; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg);">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">🛍️</div>
+        <h2 style="font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Your shopping bag is empty</h2>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem;">Explore our curated clothing edits and add your favorite pieces.</p>
+        <a href="products.html" class="btn btn-primary">Discover New Arrivals &rarr;</a>
+      </div>
+
+      <div id="cart-content-view" style="display: grid; grid-template-columns: 1fr 380px; gap: 3rem; align-items: start;">
+        <!-- Left: Items Table -->
+        <div style="background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden;">
+          <div style="padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Garment Details</span>
+            <button id="btn-clear-cart" style="font-size: 0.75rem; color: var(--rose); background: none; border: none; cursor: pointer;">Empty Bag</button>
+          </div>
+          <div id="cart-items-table" style="divide-y: 1px solid var(--border);">
+            <!-- Cart items injected via cart-page.js -->
+          </div>
+        </div>
+
+        <!-- Right: Order Summary & Coupon -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <!-- Coupon Box -->
+          <div style="background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem;">
+            <h3 style="font-size: 0.9rem; font-weight: 700; margin-bottom: 0.75rem;">Promotional Voucher</h3>
+            <form id="coupon-form" style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <input type="text" id="coupon-input" class="form-control" placeholder="Try STYLE40 or WELCOME10" style="text-transform: uppercase; font-size: 0.85rem;" />
+              <button type="submit" class="btn btn-secondary btn-sm" style="white-space: nowrap;">Apply</button>
+            </form>
+            <p style="font-size: 0.75rem; color: var(--text-muted);">Use code <strong>STYLE40</strong> for 40% discount.</p>
+          </div>
+
+          <!-- Totals Card -->
+          <div style="background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem;">
+            <h3 style="font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;">
+              Summary Breakdown
+            </h3>
+            
+            <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.85rem; margin-bottom: 1.5rem;">
+              <div style="display: flex; justify-content: space-between;">
+                <span style="color: var(--text-muted);">Subtotal</span>
+                <span id="summary-subtotal" style="font-family: var(--font-mono); font-weight: 600;">$0.00</span>
+              </div>
+              <div id="summary-discount-row" style="display: none; justify-content: space-between; color: var(--emerald);">
+                <span>Discount Promo</span>
+                <span id="summary-discount" style="font-family: var(--font-mono); font-weight: 600;">-$0.00</span>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span style="color: var(--text-muted);">Shipping Ground</span>
+                <span id="summary-shipping" style="font-family: var(--font-mono); font-weight: 600;">FREE</span>
+              </div>
+              <div style="padding-top: 1rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 800;">
+                <span>Estimated Total</span>
+                <div style="text-align: right;">
+                  <span id="summary-total" style="font-family: var(--font-mono);">$0.00 USD</span>
+                  <span id="summary-inr" style="display: block; font-size: 0.75rem; color: var(--emerald); font-weight: 600;">≈ ₹0 INR</span>
+                </div>
+              </div>
+            </div>
+
+            <a href="checkout.html" class="btn btn-primary btn-block btn-lg" style="margin-bottom: 0.75rem;">
+              Proceed to Checkout &rarr;
+            </a>
+            <a href="products.html" class="btn btn-secondary btn-block btn-sm">
+              Continue Browsing Collection
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script type="module" src="js/cart-page.js"></script>
+</body>
+</html>

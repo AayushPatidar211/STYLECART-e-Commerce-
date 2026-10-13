@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Details & Tracking — StyleCart</title>
+  <meta name="description" content="Track your package fulfillment timeline, review items, and manage orders.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main style="padding: 2.5rem 0 5rem;">
+    <div class="container container-narrow">
+      <nav style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+        <a href="orders.html" style="text-decoration: underline;">&larr; Back to All Orders</a>
+      </nav>
+
+      <div class="card" style="padding: 2.5rem; margin-bottom: 2rem;">
+        <!-- Top Status Bar -->
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700;">Order Reference</span>
+            <h1 id="det-order-number" style="font-family: var(--font-mono); font-size: 1.75rem; font-weight: 800;">SC-XXXX</h1>
+            <p id="det-order-date" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Placed on ...</p>
+          </div>
+          <div style="text-align: right;">
+            <span id="det-status-badge" class="badge badge-placed" style="font-size: 0.85rem; padding: 0.35rem 0.85rem;">PLACED</span>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
+              Tracking: <strong id="det-tracking-number" style="font-family: var(--font-mono); color: #2563eb;">TRK-XXXX</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fulfillment Progress Timeline -->
+        <div style="margin-bottom: 3rem;">
+          <h3 style="font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 1.5rem;">
+            Delivery Fulfillment Lifecycle
+          </h3>
+          <div id="lifecycle-timeline" class="order-timeline">
+            <!-- Injected via order-detail.js -->
+          </div>
+        </div>
+
+        <!-- Items Table -->
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">
+            Package Garments
+          </h3>
+          <div id="det-items-list" style="divide-y: 1px solid var(--border);">
+            <!-- Items injected via order-detail.js -->
+          </div>
+        </div>
+
+        <!-- Summary & Address Two Column Box -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; background: var(--bg-subtle); padding: 1.75rem; border-radius: var(--radius-md); margin-bottom: 2.5rem;">
+          <div>
+            <h4 style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem;">Delivery Destination</h4>
+            <div id="det-shipping-address" style="font-size: 0.85rem; line-height: 1.6;">
+              <!-- Address injected -->
+            </div>
+          </div>
+          <div>
+            <h4 style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem;">Payment Breakdown</h4>
+            <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.85rem;">
+              <div style="display: flex; justify-content: space-between;">
+                <span>Subtotal:</span>
+                <span id="det-subtotal" style="font-family: var(--font-mono);">$0.00</span>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span>Shipping Ground:</span>
+                <span id="det-shipping" style="font-family: var(--font-mono);">FREE</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 1.1rem; border-top: 1px solid var(--border); padding-top: 0.5rem; margin-top: 0.25rem;">
+                <span>Total Amount:</span>
+                <span id="det-total" style="font-family: var(--font-mono);">$0.00 USD</span>
+              </div>
+              <div style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-muted);">
+                Payment: <strong id="det-payment-method">Razorpay</strong> ·
+                <span id="det-transaction-id" style="font-family: var(--font-mono);">TXN-XXXX</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Actions -->
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+          <a href="orders.html" class="btn btn-secondary btn-sm">&larr; Return to Orders</a>
+          <button id="btn-cancel-order" class="btn btn-outline btn-sm" style="color: var(--rose); border-color: var(--rose);">
+            Cancel Order & Restock Items
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script type="module" src="js/order-detail.js"></script>
+</body>
+</html>
